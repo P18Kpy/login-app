@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+    <h1>Sign Up</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="first-name">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required><br>
+            <br>
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required><br>
+        <br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <br>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="cpassword" required><br>
+        <br>
+        <!-- Any other essentials can be added here -->
+
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>
+{% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+  </form>
+{% endblock %}
